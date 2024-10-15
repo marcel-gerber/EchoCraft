@@ -6,8 +6,17 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
+/**
+ * Class for starting a new Server
+ */
 public class Server {
 
+    /**
+     * Starts the server listening on the specified port
+     *
+     * @param port
+     * @throws InterruptedException
+     */
     public static void start(int port) throws InterruptedException {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         EventLoopGroup bossGroup = new NioEventLoopGroup();
