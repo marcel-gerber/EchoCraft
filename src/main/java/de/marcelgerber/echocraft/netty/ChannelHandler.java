@@ -29,6 +29,9 @@ public class ChannelHandler extends ChannelInboundHandlerAdapter {
         int length = Buffer.readVarInt(byteBuf);
         int packetID = Buffer.readVarInt(byteBuf);
 
+        System.out.println("Received packet " + packetID + " with length of " + length + " bytes" + " from "
+                + ctx.channel().remoteAddress());
+
         // Get the Minecraft Packet based on the packets' ID
         MinecraftPacket minecraftPacket = PacketRegistry.createPacket(currentState, packetID);
 
