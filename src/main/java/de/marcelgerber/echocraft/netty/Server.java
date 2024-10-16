@@ -31,6 +31,7 @@ public class Server {
             }).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.SO_KEEPALIVE, true);
 
             ChannelFuture channelFuture = bootstrap.bind(port).sync();
+            System.out.println("Server listening on port " + port);
 
             channelFuture.channel().closeFuture().sync();
         } finally {
