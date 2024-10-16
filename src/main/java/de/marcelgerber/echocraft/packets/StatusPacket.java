@@ -1,6 +1,7 @@
 package de.marcelgerber.echocraft.packets;
 
 import de.marcelgerber.echocraft.utils.Buffer;
+import de.marcelgerber.echocraft.utils.ServerInfo;
 import io.netty.buffer.ByteBuf;
 
 public class StatusPacket implements MinecraftPacket {
@@ -12,16 +13,17 @@ public class StatusPacket implements MinecraftPacket {
      */
     @Override
     public void encode(ByteBuf byteBuf) {
-        String response = "{\"description\":{\"extra\":[{\"text\":\"Bauserver\"}],\"text\":\"\"},\"players\":{\"max\":20,\"online\":0},\"version\":{\"name\":\"Spigot 1.21.1\",\"protocol\":767}}";
+        // Respond with information of the server
+        String serverStatus = ServerInfo.getServerStatusJson();
 
         // Length of PacketID + Data
-        Buffer.writeVarInt(byteBuf, response.length() + 3);
+        Buffer.writeVarInt(byteBuf, serverStatus.length() + 3);
 
-        // PacketID = 0
+        // PacketID = 0x00
         Buffer.writeVarInt(byteBuf, 0);
 
         // Write ServerInfo string to byteBuf
-        Buffer.writeString(byteBuf, response, Short.MAX_VALUE);
+        Buffer.writeString(byteBuf, serverStatus, Short.MAX_VALUE);
     }
 
     /**
