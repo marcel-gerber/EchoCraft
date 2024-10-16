@@ -3,8 +3,17 @@ package de.marcelgerber.echocraft.utils;
 import io.netty.buffer.ByteBuf;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Class providing helper functions for reading and writing to and from a ByteBuf
+ */
 public class Buffer {
 
+    /**
+     * Reads a variable-length integer from the ByteBuf and returns it
+     *
+     * @param byteBuf
+     * @return int
+     */
     public static int readVarInt(ByteBuf byteBuf) {
         int value = 0;
         int bytes = 0;
@@ -38,6 +47,13 @@ public class Buffer {
         }
     }
 
+    /**
+     * Writes a variable-length integer to the ByteBuf
+     *
+     * @param byteBuf
+     * @param maxLength
+     * @return
+     */
     public static String readString(ByteBuf byteBuf, int maxLength) {
         int length = readVarInt(byteBuf);
 
@@ -55,6 +71,13 @@ public class Buffer {
         return string;
     }
 
+    /**
+     * Reads a UTF-8 string from the ByteBuf with a maximum length limit
+     *
+     * @param byteBuf
+     * @param string
+     * @param maxLength
+     */
     public static void writeString(ByteBuf byteBuf, String string, int maxLength) {
         if(string.length() > maxLength) {
             throw new RuntimeException("String too long");
