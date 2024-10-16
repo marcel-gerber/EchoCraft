@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class PacketRegistry {
 
-    // All packets will be saved in this Map indexed with its packetID
+    // All packets will be saved in these Maps indexed with their packetID
     private static final Map<Integer, Class<? extends MinecraftPacket>> handshakingPackets = new HashMap<>();
     private static final Map<Integer, Class<? extends MinecraftPacket>> statusPackets = new HashMap<>();
 
