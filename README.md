@@ -17,3 +17,10 @@ A very simple Minecraft server (only being able to respond to pings) built using
 4. The server can handle a ping request and respond with server info, such as max player count and version.
 
 ## How to Run
+
+1. Download the jar (see Releases).
+2. Run it via command line.
+
+````bash
+java -jar EchoCraft.jar
+````
