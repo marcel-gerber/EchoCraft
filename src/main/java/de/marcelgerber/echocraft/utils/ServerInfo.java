@@ -4,6 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+/**
+ * Class for handling the information of the server
+ */
 public class ServerInfo {
 
     private static final String motd = "What's a ghast's favorite country? The Nether-Lands!";
@@ -12,6 +15,12 @@ public class ServerInfo {
     private static final String versionName = "1.21.1";
     private static final int versionProtocol = 767;
 
+    /**
+     * Function that returns a JSON-String containing
+     * current information about the server
+     *
+     * @return String
+     */
     public static String getServerStatusJson() {
         Gson gson = new Gson();
 
